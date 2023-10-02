@@ -1,0 +1,23 @@
+An array nums of length n is beautiful if:
+
+nums is a permutation of the integers in the range [1, n].
+For every 0 <= i < j < n, there is no index k with i < k < j where 2 * nums[k] == nums[i] + nums[j].
+Given the integer n, return any beautiful array nums of length n. There will be at least one valid answer for the given n.
+
+Example 1:
+
+Output: [2,1,4,3
+
+#################################################################Python#########################################
+class Solution:
+    def beautifulArray(self, n: int) -> List[int]:
+        if n == 1:
+            return [1]
+        
+        odds = self.beautifulArray((n + 1) // 2)
+        evens = self.beautifulArray(n // 2)
+        
+        return [2 * x - 1 for x in odds] + [2 * x for x in evens]
+
+
+
